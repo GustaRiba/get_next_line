@@ -3,20 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmorais- < gmorais-@student.42lisboa.co    +#+  +:+       +#+        */
+/*   By: gmorais- <gmorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:10:31 by gmorais-          #+#    #+#             */
-/*   Updated: 2022/12/07 13:31:20 by gmorais-         ###   ########.fr       */
+/*   Updated: 2022/12/07 14:16:22 by gmorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-size_t ft_strlen(char *str)
+size_t	ft_strlen(char *str)
 {
 	int	i;
 
 	i = 0;
+	if (!str)
+		return (0);
 	while (str[i] && str[i] != '\n')
 		i++;
 	if (str[i] == '\n')
@@ -24,7 +26,7 @@ size_t ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strojoin(char *str1, char *str2)
+char	*ft_strjoin(char *str1, char *str2)
 {
 	int		i;
 	char	*mem;
@@ -32,14 +34,14 @@ char	*ft_strojoin(char *str1, char *str2)
 	i = 0;
 	mem = malloc(ft_strlen(str1) + ft_strlen(str2) + 1);
 	if (!mem)
-		return NULL;
-	while (str1[i] && str1)
+		return (NULL);
+	while (str1 && str1[i])
 	{
 		mem[i] = str1[i];
 		i++;
 	}
 	free(str1);
-	while(str2)
+	while (*str2)
 	{
 		mem[i++] = *str2;
 		if (*str2++ == '\n')
@@ -58,8 +60,7 @@ int	stashfree(char *buff)
 	i = 0;
 	j = 0;
 	l_true = 0;
-
-	while (*buff)
+	while (buff[i])
 	{
 		if (l_true)
 			buff[j++] = buff[i];

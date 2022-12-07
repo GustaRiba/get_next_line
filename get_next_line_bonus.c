@@ -3,23 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmorais- < gmorais-@student.42lisboa.co    +#+  +:+       +#+        */
+/*   By: gmorais- <gmorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:56:23 by gmorais-          #+#    #+#             */
-/*   Updated: 2022/12/07 13:28:38 by gmorais-         ###   ########.fr       */
+/*   Updated: 2022/12/07 14:22:18 by gmorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
 	static char	stash[FOPEN_MAX][BUFFER_SIZE + 1];
 	char		*line;
 	int			i;
 
 	i = 0;
-	while(BUFFER_SIZE < 1 || read(fd, 0, 0) < 0 || fd <= FOPEN_MAX)
+	if (fd < 0 || fd > FOPEN_MAX)
+		return (NULL);
+	if (BUFFER_SIZE < 1 || read(fd, 0, 0) < 0 || fd >= FOPEN_MAX)
 	{
 		while (stash[fd][i])
 			stash[fd][i++] = 0;
@@ -35,12 +37,13 @@ char *get_next_line(int fd)
 	return (line);
 }
 
-int main()
+/*int main()
 {
 	int fd = 0;
 	char *to_free;
 	fd = open("./fd.txt", O_RDWR);
+	printf("%d\n", fd);
 	to_free = get_next_line(fd);
 	printf("%s", to_free);
 	close(fd);
-}
+}*/

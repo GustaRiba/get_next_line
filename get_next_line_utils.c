@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmorais- < gmorais-@student.42lisboa.co    +#+  +:+       +#+        */
+/*   By: gmorais- <gmorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 12:35:37 by gmorais-          #+#    #+#             */
-/*   Updated: 2022/12/07 12:29:17 by gmorais-         ###   ########.fr       */
+/*   Updated: 2022/12/07 13:41:16 by gmorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "get_next_line.h"
+#include "get_next_line.h"
 
 size_t	ft_strlen(char *str)
 {
 	int	i;
-	
+
 	i = 0;
 	if (!str)
 		return (0);
@@ -29,7 +29,7 @@ size_t	ft_strlen(char *str)
 int	stashfree(char *buff)
 {
 	int	i;
-	int j;
+	int	j;
 	int	true;
 
 	i = 0;
